@@ -1,5 +1,7 @@
 body {
-	
+  background-image: url(campus.png);
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 #splash_title {

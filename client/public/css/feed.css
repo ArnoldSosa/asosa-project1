@@ -23,7 +23,7 @@ main {
 footer {
 	position: absolute;
 	left: 0px;
-  bottom: 0px;
+  	bottom: 0px;
 	width: 100%;
 	background-color: red;
 	text-align: center;
