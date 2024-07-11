@@ -12,6 +12,7 @@ header {
 	background-color: red;
 	font-size: 35px;
 	color: white;
+	font-family: 'Courier New', Courier, monospace;
 }
 
 main {
@@ -28,6 +29,7 @@ footer {
 	background-color: red;
 	text-align: center;
 	font-size: 25px;
+	font-family: 'Courier New', Courier, monospace;
 }
 
 #site_info {
@@ -45,6 +47,7 @@ a {
 	color: blue;
 	text-decoration: underline;
 	font-size: 25px;
+	font-family: cursive;
 }
 
 #redfox{
