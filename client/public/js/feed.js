@@ -1,53 +1,73 @@
 document.addEventListener('DOMContentLoaded', function() {
-    function goToMaristEdu() {
-        goToLocation('http://my.marist.edu');
+    function Story(title, body, linkUrl, imageUrl) {
+        this.Title = title;
+        this.Body = body;
+        this.linkUrl = linkUrl;
+        this.imageUrl = imageUrl;
     }
 
-    document.getElementById('portal_button').addEventListener('click', goToMaristEdu);
+    function initializePage() {
+        addEventListeners();
+        removeNewsfeed();
+        makeNews();
+    }
 
-    document.getElementById('portal_button_text').addEventListener('click', goToMaristEdu);
-});
+    function addEventListeners() {
+        let portalButton = document.getElementById('portal_button');
+        if (portalButton) {
+            portalButton.addEventListener('click', goToMaristPortal);
+        }
 
-let currentStories = [];
+        let portalButtonText = document.getElementById('portal_button_text');
+        if (portalButtonText) {
+            portalButtonText.addEventListener('click', goToMaristPortal);
+        }
+    }
 
-    currentStories.push({
-        Title: 'Marist Story 1',
-        Body: '[Sample Text for Story 1]',
-        linkUrl: 'https://example.com/story1',
-        imageUrl: 'images/campus.png'
-    });
+    function removeNewsfeed() {
+        let newsfeedElement = document.getElementById('newsfeed');
+        if (newsfeedElement) {
+            newsfeedElement.innerHTML = '';
+        }
+    }
 
-    currentStories.push({
-        Title: 'Marist Story 2',
-        Body: '[Sample Text for Story 2]',
-        linkUrl: 'https://example.com/story2',
-        imageUrl: 'images/news_pic.jpg'
-    });
+    function makeNews() {
+        let currentNews = [
+            new Story('Marist Campus', 'Would you like to see more info on the campus? Click above!', 'https://www.marist.edu/about/map', 'images/campus.png'),
+            new Story('NewsFeed', 'Do you want to know what happens on and off campus? Press the link above!', 'https://www.marist.edu/news', 'images/news_pic.jpg'),
+            new Story('The Hancock Center', 'Find more information about the Hancock Center above!', 'https://www.marist.edu/management/investment-center', 'images/hancock.jpeg')
+        ];
 
-    currentStories.push({
-        Title: 'Marist Story 3',
-        Body: '[Sample Text for Story 3]',
-        linkUrl: 'https://example.com/story3',
-        imageUrl: 'images/hancock.jpeg'
-    });
+        currentNews.forEach(function(item) {
+            displayItem(item);
+        });
+    }
 
     function displayItem(feedItem) {
         let newsfeedElement = document.getElementById('newsfeed');
-        
-        let itemHTML = `
-            <div class="feed-item">
-                <h2><a href="${feedItem.linkUrl}" target="_blank">${feedItem.Title}</a></h2>
-                <p>${feedItem.Body}</p>
-                <a href="${feedItem.linkUrl}" target="_blank">
-                    <img src="${feedItem.imageUrl}" alt="${feedItem.Title}" style="max-width: 20%; height: 20%;">
-                </a>
-                <hr>
-            </div>
-        `;
-        
-        newsfeedElement.innerHTML += itemHTML;
+        if (newsfeedElement) {
+            let itemHTML = `
+                <div class="feed-item">
+                    <h2 class="small-title"><a href="${feedItem.linkUrl}" target="_blank">${feedItem.Title}</a></h2>
+                    <p>${feedItem.Body}</p>
+                    <a href="${feedItem.linkUrl}" target="_blank">
+                        <img src="${feedItem.imageUrl}" alt="${feedItem.Title}" style="max-width: 14%; height: 14;">
+                    </a>
+                    <hr>
+                </div>
+            `;
+            
+            newsfeedElement.innerHTML += itemHTML;
+        }
     }
 
-    currentStories.forEach(function(item) {
-        displayItem(item);
-    });
+    function goToMaristPortal() {
+        goToLocation('http://my.marist.edu');
+    }
+
+    function goToLocation(url) {
+        window.location.href = url;
+    }
+
+    initializePage();
+});
