@@ -38,7 +38,7 @@ footer {
 
 a {
 	color: blue;
-	text-decoration: none;
+	text-decoration: underline;
 }
 
 #redfox{
