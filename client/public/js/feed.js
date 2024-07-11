@@ -41,6 +41,7 @@ let currentStories = [];
                 <a href="${feedItem.linkUrl}" target="_blank">
                     <img src="${feedItem.imageUrl}" alt="${feedItem.Title}" style="max-width: 20%; height: 20%;">
                 </a>
+                <hr>
             </div>
         `;
         
