@@ -12,21 +12,21 @@ let currentStories = [];
 
     currentStories.push({
         Title: 'Marist Story 1',
-        Body: 'This is the body of the story, it may be longer',
+        Body: '[Sample Text for Story 1]',
         linkUrl: 'https://example.com/story1',
         imageUrl: 'images/campus.png'
     });
 
     currentStories.push({
         Title: 'Marist Story 2',
-        Body: 'This is the body of the story, it may be longer',
+        Body: '[Sample Text for Story 2]',
         linkUrl: 'https://example.com/story2',
         imageUrl: 'images/news_pic.jpg'
     });
 
     currentStories.push({
         Title: 'Marist Story 3',
-        Body: 'This is the body of the story, it may be longer',
+        Body: '[Sample Text for Story 3]',
         linkUrl: 'https://example.com/story3',
         imageUrl: 'images/hancock.jpeg'
     });
