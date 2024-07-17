@@ -1,5 +1,7 @@
 const express = require('express')
+var bodyParser = require('body-parser');
 const app = express();
+app.use(bodyParser.json({ type: 'application/json' }));
 app.use(express.static('client/public'));
 
 app.get('/', function(req, res) {
@@ -16,7 +18,7 @@ app.route('/api/feeds')
 	.get(feeds.getFeeds)
 	.post(feeds.saveFeed)
 
-app.route('/api/feedItem/:feedItemId')
+app.route('/api/feeds/:feedId')
 	.get(feeds.getFeed)
 	.delete(feeds.deleteFeed)
 	.patch(feeds.updateFeed)
