@@ -1,7 +1,6 @@
 const express = require('express')
-var bodyParser = require('body-parser');
 const app = express();
-app.use(bodyParser.json({ type: 'application/json' }));
+const bodyParser = require('body-parser');
 app.use(express.static('client/public'));
 
 app.get('/', function(req, res) {
@@ -12,15 +11,17 @@ app.get('/feed', function(req, res) {
     res.sendFile('feed.html', {root: './client/views'})
 })
 
-var feeds = require('./controller/feedController');
+var currentStories = require('./controller/feedController');
 
-app.route('/api/feeds')
-	.get(feeds.getFeeds)
-	.post(feeds.saveFeed)
+app.use(bodyParser.json({type: 'application/json'}));
 
-app.route('/api/feeds/:feedId')
-	.get(feeds.getFeed)
-	.delete(feeds.deleteFeed)
-	.patch(feeds.updateFeed)
+app.route('/api/feedItem')
+    .get(currentStories.getFeeds)
+    .post(currentStories.saveFeed)
+
+app.route('/api/feedItem/:feedId')
+    .get(currentStories.getFeed)
+    .delete(currentStories.deleteFeed)
+    .patch(currentStories.updateFeed)
 
 app.listen(1337, () => console.log('Listening on port 1337.'))
